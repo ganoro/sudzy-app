@@ -37,30 +37,20 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        // var parentElement = document.getElementById(id);
-        // var listeningElement = parentElement.querySelector('.listening');
-        // var receivedElement = parentElement.querySelector('.received');
-        //
-        // listeningElement.setAttribute('style', 'display:none;');
-        // receivedElement.setAttribute('style', 'display:block;');
-        app.launchApp();
-
-        function onOffline() {
+        if (id == 'deviceready') {
             app.launchApp();
         }
-        function onOnline() {
-            app.launchApp();
-        }
-        document.addEventListener("online", onOnline, false);
-        document.addEventListener("offline", onOffline, false);
     },
 
     launchApp: function() {
         var isOnline = navigator.connection.type != Connection.NONE && navigator.onLine;
-        while (!isOnline) {
-            alert("Please connect to the internet as Sudzy requires your mobile device to be online.");
-            isOnline = navigator.connection.type != Connection.NONE && navigator.onLine;
+        if (!isOnline) {
+            navigator.notification.alert("Sudzy requires your mobile to be online, please connect and try again.", function() {
+                app.launchApp();
+            }, "", "Retry");
+            return;
         }
+
         if (typeof(ref) != "undefined") {
             ref.close();
         }
