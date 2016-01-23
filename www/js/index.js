@@ -54,7 +54,7 @@ var app = {
         if (typeof(ref) != "undefined") {
             ref.close();
         }
-        ref = cordova.InAppBrowser.open('https://www.sudzy.co', '_blank', 'location=no,toolbar=no,hardwareback=no');
+        ref = cordova.InAppBrowser.open('https://www.sudzy.co', '_blank', 'location=no,toolbar=no,hardwareback=yes');
     }
 };
 

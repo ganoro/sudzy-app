@@ -1,0 +1,8 @@
+# build release from Android
+cordova build --release android
+
+# sign
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore sudzy-release-key.keystore /Users/rganor/git/sudzy-app/platforms/android/build/outputs/apk/android-release-unsigned.apk sudzy
+
+# zip align
+~/Downloads/android-sdk-macosx/build-tools/23.0.2/zipalign -v 4 /Users/rganor/git/sudzy-app/platforms/android/build/outputs/apk/android-release-unsigned.apk android.apk
