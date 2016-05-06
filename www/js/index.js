@@ -55,6 +55,7 @@ var app = {
             ref.close();
         }
         ref = cordova.InAppBrowser.open('https://www.sudzy.co', '_blank', 'location=no,toolbar=no,hardwareback=yes');
+        ref.executeScript({ code: "isMobileApp = true;" }, function() {});
     }
 };
 
