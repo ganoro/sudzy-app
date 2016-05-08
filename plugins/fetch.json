@@ -38,5 +38,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-intercom": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-intercom"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

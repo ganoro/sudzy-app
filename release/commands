@@ -1,4 +1,5 @@
 # build release from Android
+export ANDROID_HOME=~/Downloads/android-sdk-macosx
 cordova build --release android
 
 # sign, password is Coder127

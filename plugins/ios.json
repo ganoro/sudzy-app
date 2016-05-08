@@ -21,6 +21,9 @@
         },
         "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.sudzy.app"
+        },
+        "cordova-plugin-intercom": {
+            "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
         }
     },
     "dependent_plugins": {}

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.sudzy.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.sudzy.app" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Sudzy</name>
     <description>
         Sudzy allows users to place laundry orders from local cleaners from mobile or Web.
@@ -58,4 +58,9 @@
     <plugin name="cordova-plugin-inappbrowser" spec="~1.1.1" />
     <plugin name="cordova-plugin-dialogs" spec="~1.2.0" />
     <plugin name="cordova-plugin-vibration" spec="~2.0.0" />
+    <plugin name="cordova-plugin-intercom" version="~1.1.5" />
+    <preference name="intercom-app-id" value="q45ztec4"/>
+    <preference name="intercom-ios-api-key" value="ios_sdk-8755dd05bea795f7c973b0db8b9dfd83cfba0c64"/>
+    <preference name="intercom-android-api-key" value="android_sdk-e296908b6c922f593dd2f65dad6f72e6d52385bc"/>
+    <preference name="deployment-target" value="7.0" />
 </widget>
