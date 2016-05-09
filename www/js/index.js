@@ -54,7 +54,7 @@ var app = {
         if (typeof(ref) != "undefined") {
             ref.close();
         }
-        ref = cordova.InAppBrowser.open('http://localhost:7000', '_blank', 'location=no,toolbar=no,hardwareback=yes');
+        ref = cordova.InAppBrowser.open('https://www.sudzy.co', '_blank', 'location=no,toolbar=no,hardwareback=yes');
         ref.addEventListener('loadstop', function() {
             ref.executeScript({ code: "setCordovaMobileApp()" }, function() { });
             ref.executeScript({ code: "getEmail()" },
