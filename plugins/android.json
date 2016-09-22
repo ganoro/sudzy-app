@@ -24,6 +24,9 @@
         },
         "cordova-plugin-intercom": {
             "PACKAGE_NAME": "com.sudzy.app"
+        },
+        "com.verso.cordova.clipboard": {
+            "PACKAGE_NAME": "com.sudzy.app"
         }
     },
     "dependent_plugins": {}

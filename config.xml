@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.sudzy.app" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.sudzy.app" version="0.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Sudzy</name>
     <description>
         Sudzy allows users to place laundry orders from local cleaners from mobile or Web.
@@ -11,7 +11,7 @@
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-intent href="https://www.sudzy.co" />
+    <allow-intent href="https://www.sudzy.co/register.html?app=true" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
@@ -28,6 +28,11 @@
         <icon density="xhdpi" src="res/icons/android/mipmap-xhdpi/ic_launcher.png" />
     </platform>
     <platform name="ios">
+        <preference name="webviewbounce" value="false" />
+        <preference name="DisallowOverscroll" value="true" />
+        <preference name="UIWebViewBounce" value="false" />
+        <preference name="StatusBarOverlaysWebView" value="false" />
+
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <splash height="480" src="res/screen/ios/screen-iphone-portrait.png" width="320" />
@@ -37,21 +42,16 @@
         <splash height="1136" src="res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" />
         <splash height="1334" src="res/screen/ios/screen-iphone-portrait-667h.png" width="750" />
         <splash height="2208" src="res/screen/ios/screen-iphone-portrait.png" width="1242" />
-        <icon height="180" src="res/icons/ios/icon-60@3x.png" width="180" />
-        <icon height="60" src="res/icons/ios/icon-60.png" width="60" />
-        <icon height="120" src="res/icons/ios/icon-60@2x.png" width="120" />
-        <icon height="76" src="res/icons/ios/icon-76.png" width="76" />
-        <icon height="152" src="res/icons/ios/icon-76@2x.png" width="152" />
-        <icon height="40" src="res/icons/ios/icon-40.png" width="40" />
-        <icon height="80" src="res/icons/ios/icon-40@2x.png" width="80" />
-        <icon height="57" src="res/icons/ios/icon.png" width="57" />
-        <icon height="114" src="res/icons/ios/icon@2x.png" width="114" />
-        <icon height="72" src="res/icons/ios/icon-72.png" width="72" />
-        <icon height="144" src="res/icons/ios/icon-72@2x.png" width="144" />
-        <icon height="29" src="res/icons/ios/icon-small.png" width="29" />
-        <icon height="58" src="res/icons/ios/icon-small@2x.png" width="58" />
-        <icon height="50" src="res/icons/ios/icon-small-50.png" width="50" />
-        <icon height="100" src="res/icons/ios/icon-small-50@2x.png" width="100" />
+        <icon height="180" src="res/icons/ios/Icon-App-60x60@3x.png" width="180" />
+        <icon height="60"  src="res/icons/ios/Icon-App-60x60@1x.png" width="60" />
+        <icon height="120" src="res/icons/ios/Icon-App-60x60@2x.png" width="120" />
+        <icon height="76"  src="res/icons/ios/Icon-App-76x76@1x.png" width="76" />
+        <icon height="152" src="res/icons/ios/Icon-App-76x76@2x.png" width="152" />
+        <icon height="40"  src="res/icons/ios/Icon-App-40x40@1x.png" width="40" />
+        <icon height="80"  src="res/icons/ios/Icon-App-40x40@2x.png" width="80" />
+        <icon height="57"  src="res/icons/ios/Icon-App-57x57@1x.png" width="57" />
+        <icon height="29"  src="res/icons/ios/Icon-App-29x29@1x.png" width="29" />
+        <icon height="58"  src="res/icons/ios/Icon-App-29x29@2x.png" width="58" />
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-network-information" spec="~1.1.0" />

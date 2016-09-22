@@ -27,6 +27,8 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('resume', this.onResume, false);
+
     },
     // deviceready Event Handler
     //
@@ -35,6 +37,14 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onResume: function() {
+        app.resume();
+    },
+
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         if (id == 'deviceready') {
@@ -54,20 +64,59 @@ var app = {
         if (typeof(ref) != "undefined") {
             ref.close();
         }
-        ref = cordova.InAppBrowser.open('https://www.sudzy.co', '_blank', 'location=no,toolbar=no,hardwareback=yes');
+        ref = cordova.InAppBrowser.open('https://www.sudzy.co/register.html?app=true', '_blank', 'location=no,toolbar=no,hardwareback=yes');
         ref.addEventListener('loadstop', function() {
             ref.executeScript({ code: "setCordovaMobileApp()" }, function() { });
             ref.executeScript({ code: "getEmail()" },
                 function( values ) {
                     var email = values[ 0 ];
                     if ( email && email != "" && email.indexOf("@") > -1) {
-                        ref.executeScript({ code: "redirectPersonal();" }, function() { });
+                        ref.executeScript({ code: "redirectPersonal('app/');" }, function() { });
                         intercom.registerIdentifiedUser({email: email})
                     }
                 }
             );
-        })
+            // Start an interval
+            setInterval(function() {
 
+                ref.executeScript(
+                    {
+                        code: "getMessage()"
+                    },
+                    function( values ) {
+                        console.log(JSON.stringify(values));
+                        return;
+                        setTimeout(function() {
+                            app.processMessage(values);
+                        }, 1);
+                        return;
+                    })
+            }, 2000);
+        })
+    },
+
+    resume : function() {
+        ref.executeScript({ code: "getEmail()" },
+            function( values ) {
+                var email = values[ 0 ];
+                if ( email && email != "" && email.indexOf("@") > -1) {
+                    ref.executeScript({ code: "refreshOrder();" }, function(values) { });
+                }
+            }
+        );
+    },
+
+    processMessage: function(values) {
+        if (!values || values[0] == null) {
+            return;
+        }
+        var m = values[0].split('|');
+        switch(m[0]) {
+            case 'clipboard':
+                return cordova.plugins.clipboard.copy(m[1]);
+            case 'url':
+                return window.open(encodeURI(m[1]), '_system');
+        }
     }
 };
 
