@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.sudzy.app" version="0.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.sudzy.app" version="1.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Sudzy</name>
     <description>
         Sudzy allows users to place laundry orders from local cleaners from mobile or Web.
@@ -16,6 +16,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="whatsapp://*" />
     <platform name="android">
         <allow-intent href="market:*" />
         <splash density="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
@@ -32,7 +33,6 @@
         <preference name="DisallowOverscroll" value="true" />
         <preference name="UIWebViewBounce" value="false" />
         <preference name="StatusBarOverlaysWebView" value="false" />
-
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <splash height="480" src="res/screen/ios/screen-iphone-portrait.png" width="320" />
@@ -43,15 +43,15 @@
         <splash height="1334" src="res/screen/ios/screen-iphone-portrait-667h.png" width="750" />
         <splash height="2208" src="res/screen/ios/screen-iphone-portrait.png" width="1242" />
         <icon height="180" src="res/icons/ios/Icon-App-60x60@3x.png" width="180" />
-        <icon height="60"  src="res/icons/ios/Icon-App-60x60@1x.png" width="60" />
+        <icon height="60" src="res/icons/ios/Icon-App-60x60@1x.png" width="60" />
         <icon height="120" src="res/icons/ios/Icon-App-60x60@2x.png" width="120" />
-        <icon height="76"  src="res/icons/ios/Icon-App-76x76@1x.png" width="76" />
+        <icon height="76" src="res/icons/ios/Icon-App-76x76@1x.png" width="76" />
         <icon height="152" src="res/icons/ios/Icon-App-76x76@2x.png" width="152" />
-        <icon height="40"  src="res/icons/ios/Icon-App-40x40@1x.png" width="40" />
-        <icon height="80"  src="res/icons/ios/Icon-App-40x40@2x.png" width="80" />
-        <icon height="57"  src="res/icons/ios/Icon-App-57x57@1x.png" width="57" />
-        <icon height="29"  src="res/icons/ios/Icon-App-29x29@1x.png" width="29" />
-        <icon height="58"  src="res/icons/ios/Icon-App-29x29@2x.png" width="58" />
+        <icon height="40" src="res/icons/ios/Icon-App-40x40@1x.png" width="40" />
+        <icon height="80" src="res/icons/ios/Icon-App-40x40@2x.png" width="80" />
+        <icon height="57" src="res/icons/ios/Icon-App-57x57@1x.png" width="57" />
+        <icon height="29" src="res/icons/ios/Icon-App-29x29@1x.png" width="29" />
+        <icon height="58" src="res/icons/ios/Icon-App-29x29@2x.png" width="58" />
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-network-information" spec="~1.1.0" />
@@ -59,8 +59,12 @@
     <plugin name="cordova-plugin-dialogs" spec="~1.2.0" />
     <plugin name="cordova-plugin-vibration" spec="~2.0.0" />
     <plugin name="cordova-plugin-intercom" version="~1.1.5" />
-    <preference name="intercom-app-id" value="q45ztec4"/>
-    <preference name="intercom-ios-api-key" value="ios_sdk-8755dd05bea795f7c973b0db8b9dfd83cfba0c64"/>
-    <preference name="intercom-android-api-key" value="android_sdk-e296908b6c922f593dd2f65dad6f72e6d52385bc"/>
+    <preference name="intercom-app-id" value="q45ztec4" />
+    <preference name="intercom-ios-api-key" value="ios_sdk-8755dd05bea795f7c973b0db8b9dfd83cfba0c64" />
+    <preference name="intercom-android-api-key" value="android_sdk-e296908b6c922f593dd2f65dad6f72e6d52385bc" />
     <preference name="deployment-target" value="7.0" />
+    <plugin name="cordova-plugin-facebook4" spec="~1.7.4">
+        <variable name="APP_ID" value="332571777123658" />
+        <variable name="APP_NAME" value="Sudzy" />
+    </plugin>
 </widget>

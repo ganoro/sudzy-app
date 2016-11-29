@@ -52,12 +52,17 @@ var app = {
         }
     },
 
+    isOnline : function(callback) {
+        var online = navigator.connection.type != Connection.NONE && navigator.onLine;
+        if (!online) {
+            navigator.notification.alert("Sudzy requires your mobile to be online, please connect and try again.", callback, "", "Retry");
+        }
+        return online;
+    },
+
     launchApp: function() {
-        var isOnline = navigator.connection.type != Connection.NONE && navigator.onLine;
+        var isOnline = app.isOnline(app.launchApp);
         if (!isOnline) {
-            navigator.notification.alert("Sudzy requires your mobile to be online, please connect and try again.", function() {
-                app.launchApp();
-            }, "", "Retry");
             return;
         }
 
@@ -65,6 +70,7 @@ var app = {
             ref.close();
         }
         ref = cordova.InAppBrowser.open('https://www.sudzy.co/register.html?app=true', '_blank', 'location=no,toolbar=no,hardwareback=yes');
+        var interval = null;
         ref.addEventListener('loadstop', function() {
             ref.executeScript({ code: "setCordovaMobileApp()" }, function() { });
             ref.executeScript({ code: "getEmail()" },
@@ -77,25 +83,31 @@ var app = {
                 }
             );
             // Start an interval
-            setInterval(function() {
+            if (interval) {
+                clearInterval(interval);
+            }
 
+            interval = setInterval(function() {
+                ref.executeScript({ code: "setCordovaMobileApp()" }, function() { });
                 ref.executeScript(
                     {
                         code: "getMessage()"
                     },
                     function( values ) {
-                        console.log(JSON.stringify(values));
-                        return;
-                        setTimeout(function() {
-                            app.processMessage(values);
-                        }, 1);
-                        return;
+                        app.processMessage(values);
                     })
             }, 2000);
-        })
+        });
+        console.log("facebook login");
+        facebookConnectPlugin.activateApp(function() {}, function() {});
     },
 
     resume : function() {
+        var isOnline = app.isOnline(app.resume);
+        if (!isOnline) {
+            return;
+        }
+
         ref.executeScript({ code: "getEmail()" },
             function( values ) {
                 var email = values[ 0 ];
@@ -107,7 +119,7 @@ var app = {
     },
 
     processMessage: function(values) {
-        if (!values || values[0] == null) {
+        if (!values || !values[0]) {
             return;
         }
         var m = values[0].split('|');
@@ -115,7 +127,7 @@ var app = {
             case 'clipboard':
                 return cordova.plugins.clipboard.copy(m[1]);
             case 'url':
-                return window.open(encodeURI(m[1]), '_system');
+                return window.open(m[1], '_system');
         }
     }
 };

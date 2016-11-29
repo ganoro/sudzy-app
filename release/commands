@@ -3,7 +3,7 @@ export ANDROID_HOME=~/Downloads/android-sdk-macosx
 cordova build --release android
 
 # sign, password is Coder127
-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore sudzy-release-key.keystore /Users/rganor/git/sudzy-app/platforms/android/build/outputs/apk/android-release-unsigned.apk sudzy
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release/sudzy-release-key.keystore /Users/rganor/git/sudzy-app/platforms/android/build/outputs/apk/android-release-unsigned.apk sudzy
 
 # zip align
 ~/Downloads/android-sdk-macosx/build-tools/23.0.2/zipalign -v 4 /Users/rganor/git/sudzy-app/platforms/android/build/outputs/apk/android-release-unsigned.apk android.apk

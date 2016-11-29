@@ -27,6 +27,11 @@
         },
         "com.verso.cordova.clipboard": {
             "PACKAGE_NAME": "com.sudzy.app"
+        },
+        "cordova-plugin-facebook4": {
+            "APP_ID": "332571777123658",
+            "APP_NAME": "Sudzy",
+            "PACKAGE_NAME": "com.sudzy.app"
         }
     },
     "dependent_plugins": {}
